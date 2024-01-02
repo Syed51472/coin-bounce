@@ -60,14 +60,14 @@ const blogController = {
     try {
       const blogs = await Blog.find({});
 
-      const bolgsDto = [];
+      const blogsDto = [];
 
       for (let i = 0; i < blogs.length; i++) {
         const dto = new BlogDTO(blogs[i]);
-        bolgsDto.push(dto);
+        blogsDto.push(dto);
       }
 
-      return res.status(200).json({ blogs: bolgsDto });
+      return res.status(200).json({ blogs: blogsDto });
     } catch (error) {
       return next(error);
     }
@@ -125,7 +125,7 @@ const blogController = {
     if (photo) {
       let previousPhoto = blog.photoPath;
 
-      previousPhoto = previousPhoto.split("/").at(-1);
+      previousPhoto = previousPhoto.split("/").pop();
       // delete photo
       fs.unlinkSync(`storage/${previousPhoto}`);
 

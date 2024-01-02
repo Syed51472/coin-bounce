@@ -4,7 +4,7 @@ const CommentDTO = require("../dto/comment");
 
 const mongodbIdPattern = /^[0-9a-fA-F]{24}$/;
 
-const blogController = {
+const commentController = {
   async create(req, res, next) {
     const createCommentSchema = Joi.object({
       content: Joi.string().required(),
@@ -68,4 +68,4 @@ const blogController = {
   },
 };
 
-module.exports = blogController;
+module.exports = commentController;
